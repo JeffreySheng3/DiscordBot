@@ -2,6 +2,7 @@ package me.name.bot;
 
 import me.name.bot.command.CommandContext;
 import me.name.bot.command.commands.HelpCommand;
+import me.name.bot.command.commands.LinkCommand;
 import me.name.bot.command.commands.MemeCommand;
 import me.name.bot.command.commands.PingCommand;
 import me.name.bot.command.iCommand;
@@ -26,6 +27,7 @@ public class CommandManager {
         addCommand(new PingCommand());
         addCommand(new HelpCommand());
         addCommand(new MemeCommand());
+        addCommand(new LinkCommand());
     }
 
     /**
