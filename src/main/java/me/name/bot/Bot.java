@@ -5,6 +5,7 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.entities.MessageEmbed;
 
 
 public class Bot {
@@ -17,4 +18,6 @@ public class Bot {
         api.addEventListener(new MyListener());
         api.addEventListener(new CensorSarah());
     }
+
+
 }
