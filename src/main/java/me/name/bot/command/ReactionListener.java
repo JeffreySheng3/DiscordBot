@@ -1,23 +1,51 @@
 package me.name.bot.command;
 
+import me.name.bot.Config;
 import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.events.message.react.MessageReactionAddEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class ReactionListener extends ListenerAdapter {
-    final String roleChannel = "806038758717522010";
-    final String iseeRole = "806038872081432576";
+
+    final String thumbsUp = "806040739434856449";
+    final String lewd = "806040739434856449";
+
+    //Emote ID to Role ID
+    private final Map<String, String> roleMap = new HashMap<>();
+    public ReactionListener(){
+        roleMap.put(thumbsUp, Config.get("ISEEROLE"));
+        roleMap.put(lewd, Config.get("VROLE"));
+    }
 
     @Override
     public void onMessageReactionAdd(MessageReactionAddEvent e){
+
         MessageChannel channel = e.getChannel();
-        if(e.getChannel().getId().equals(roleChannel)){
+        if(e.getChannel().getId().equals(Config.get("ROLECHANNEL"))){
+
             Member m = e.getMember();
-            Role role = e.getGuild().getRoleById(iseeRole);
-            e.getGuild().addRoleToMember(m, role).queue();
+            String messageID = e.getMessageId();
+            //getID() method for Emote class currently broken, unable to get ID for emotes and thus unable to assign roles accordingly.
+            //String temp = roleMap.get(e.getReactionEmote().getId());
+            if(messageID.equals(Config.get("VMESSAGE"))){
+
+                Role role = e.getGuild().getRoleById(Config.get("VROLE"));
+                e.getGuild().addRoleToMember(m, role).queue();
+            }
+            if(messageID.equals(Config.get("ALLSEERMESSAGE"))){
+
+                Role role = e.getGuild().getRoleById(Config.get("ISEEROLE"));
+                e.getGuild().addRoleToMember(m, role).queue();
+            }
+
+
         }
     }
 }

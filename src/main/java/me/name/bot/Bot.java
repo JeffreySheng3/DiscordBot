@@ -14,11 +14,13 @@ public class Bot {
         EmbedUtils.setEmbedBuilder(
                 () -> new EmbedBuilder().setColor(0x3883d9)
         );
-        JDA api = JDABuilder.createDefault(Config.get("TOKEN")).build();
-        api.getPresence().setActivity(Activity.watching("Being built"));
-        api.addEventListener(new MyListener());
-        api.addEventListener(new CensorSarah());
-        api.addEventListener(new ReactionListener());
+        JDA jda = null;
+        JDABuilder api = JDABuilder.createDefault(Config.get("TOKEN"));
+        api.addEventListeners(new MyListener());
+        api.setActivity(Activity.watching("Being built"));
+        api.addEventListeners(new CensorSarah());
+        api.addEventListeners(new ReactionListener());
+        jda = api.build();
     }
 
 
