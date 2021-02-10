@@ -1,10 +1,7 @@
 package me.name.bot;
 
 import me.name.bot.command.CommandContext;
-import me.name.bot.command.commands.HelpCommand;
-import me.name.bot.command.commands.LinkCommand;
-import me.name.bot.command.commands.MemeCommand;
-import me.name.bot.command.commands.PingCommand;
+import me.name.bot.command.commands.*;
 import me.name.bot.command.iCommand;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
@@ -28,6 +25,7 @@ public class CommandManager {
         addCommand(new HelpCommand());
         addCommand(new MemeCommand());
         addCommand(new LinkCommand());
+        addCommand(new EightBallCommand());
     }
 
     /**
