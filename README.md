@@ -1,4 +1,5 @@
 # DiscordBot
+## Commands
 Commands start with '!' prefix.
 Following commands are supported:
 - !Meme - Replies with a random meme from the memes subreddit.
@@ -7,3 +8,7 @@ Following commands are supported:
 - !EightBall - Replies with a random eight ball response
 - !FlipCoin - Returns heads or tails.
 - !Help - Returns a list of supported commands.
+## Role Control
+Adds/removes roles depending on emote reaction to message.
+## Censor
+Detects banned words and removes the messages.
