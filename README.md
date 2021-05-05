@@ -1,4 +1,6 @@
 # DiscordBot
+## Demo
+[Video Demo](https://youtu.be/PR1CHwHthOk)
 ## Commands
 Commands start with '!' prefix.
 Following commands are supported:
