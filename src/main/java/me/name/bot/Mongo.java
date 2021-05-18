@@ -12,13 +12,17 @@ import java.util.List;
 import java.util.Map;
 
 public class Mongo {
+    public MongoDatabase db;
+    public final String connectionString = "mongodb+srv://Jeffrey:" + Config.get("PASSWORD") + "@freecluster.h5y8j.mongodb.net/FreeCluster?retryWrites=true&w=majority";
 
-//    public Mongo(){
-//        String connectionString = "mongodb+srv://Jeffrey:" + Config.get("PASSWORD") + "@freecluster.h5y8j.mongodb.net/FreeCluster?retryWrites=true&w=majority";
-//        try(MongoClient mongoClient = MongoClients.create(connectionString)){
-//            MongoCollection<Document> data = mongoClient.getDatabase("Discord").getCollection("Banned Words");
-//        }
-//    }
+    public Mongo(){
+
+    }
+
+    public MongoDatabase getConnection(){
+        return db;
+    }
+
     /*
     Get the list of banned words from MongoDB and return it.
      */
@@ -38,5 +42,16 @@ public class Mongo {
 
         return bannedWords;
 
+    }
+
+    public void addBannedWord(String word){
+        try(MongoClient mongoClient = MongoClients.create(connectionString)){
+            System.out.println("Connection established");
+            MongoCollection<Document> mCollection = mongoClient.getDatabase("Discord").getCollection("Banned Words");
+            mCollection.insertOne(new Document(word, word));
+
+        }catch(Exception e){
+            System.out.println("Caught mongo exception: " + e);
+        }
     }
 }

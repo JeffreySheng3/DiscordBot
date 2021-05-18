@@ -4,6 +4,7 @@ import me.name.bot.command.CommandContext;
 import me.name.bot.command.commands.*;
 import me.name.bot.command.iCommand;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import org.graalvm.compiler.core.common.type.ArithmeticOpTable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,6 +29,7 @@ public class CommandManager {
         addCommand(new EightBallCommand());
         addCommand(new FlipCoinCommand());
         addCommand(new GuessWhatCommand());
+        addCommand(new AddBannedWordCommand());
     }
 
     /**

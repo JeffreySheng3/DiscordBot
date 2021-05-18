@@ -14,6 +14,7 @@ import org.bson.Document;
 
 //TODO: add role on reaction
 public class Bot {
+
     public static void main (String[] args) throws Exception{
         EmbedUtils.setEmbedBuilder(
                 () -> new EmbedBuilder().setColor(0x3883d9)
@@ -25,15 +26,7 @@ public class Bot {
         api.addEventListeners(new ReactionListener());
         api.addEventListeners(new CensorListener());
 
-
-        Mongo mongodb = new Mongo();
-        String connectionString = "mongodb+srv://Jeffrey:" + Config.get("PASSWORD") + "@freecluster.h5y8j.mongodb.net/FreeCluster?retryWrites=true&w=majority";
-        try(MongoClient mongoClient = MongoClients.create(connectionString)) {
-            MongoDatabase data = mongoClient.getDatabase("Discord");
-            mongodb.getBannedWords(data);
-        }catch(Exception e){
-            System.out.println("Mongo Exception Caught: " + e);
-        }
+//        Bot b = new Bot();
         jda = api.build();
     }
 

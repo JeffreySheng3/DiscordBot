@@ -1,6 +1,7 @@
 package me.name.bot;
 
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.User;
@@ -14,6 +15,8 @@ public class CensorListener extends ListenerAdapter {
         User user = event.getAuthor();
         Message message = event.getMessage();
         String content = message.getContentRaw();
+//        Bot b = new Bot();
+//        MongoDatabase mongodb = b.getMongoDB();
         if(content.contains(":ChopChop:767996373139587082")){
             message.delete().queue();
             MessageChannel channel = event.getChannel();
@@ -21,4 +24,5 @@ public class CensorListener extends ListenerAdapter {
 
         }
     }
+
 }
