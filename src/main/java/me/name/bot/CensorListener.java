@@ -1,20 +1,17 @@
 package me.name.bot;
 
+import com.mongodb.client.MongoCollection;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import org.bson.Document;
 
-public class CensorSarah extends ListenerAdapter {
-//    private final String sarah = Config.get("SARAH");
+public class CensorListener extends ListenerAdapter {
     @Override
-    public void onGuildMessageReceived(GuildMessageReceivedEvent event){
+    public void onGuildMessageReceived(GuildMessageReceivedEvent event/*, MongoCollection<Document> data*/){
         User user = event.getAuthor();
-        //If someone other than Sarah sent it, ignore
-//        if(!user.getId().equals(sarah)){
-//            return;
-//        }
         Message message = event.getMessage();
         String content = message.getContentRaw();
         if(content.contains(":ChopChop:767996373139587082")){
