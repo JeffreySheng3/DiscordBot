@@ -7,14 +7,14 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class CensorSarah extends ListenerAdapter {
-    private final String sarah = Config.get("SARAH");
+//    private final String sarah = Config.get("SARAH");
     @Override
     public void onGuildMessageReceived(GuildMessageReceivedEvent event){
         User user = event.getAuthor();
         //If someone other than Sarah sent it, ignore
-        if(!user.getId().equals(sarah)){
-            return;
-        }
+//        if(!user.getId().equals(sarah)){
+//            return;
+//        }
         Message message = event.getMessage();
         String content = message.getContentRaw();
         if(content.contains(":ChopChop:767996373139587082")){

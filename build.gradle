@@ -20,6 +20,7 @@ dependencies {
     compile group: 'me.duncte123', name: 'botCommons', version: '2.0.122'
     compile("ch.qos.logback:logback-classic:1.2.3")
     compile 'io.github.cdimascio:java-dotenv:5.2.2'
+    compile 'org.mongodb:mongodb-driver-sync:4.1.1'
 }
 
 compileJava.options.encoding = 'UTF-8'

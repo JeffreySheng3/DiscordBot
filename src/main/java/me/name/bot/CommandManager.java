@@ -27,6 +27,7 @@ public class CommandManager {
         addCommand(new LinkCommand());
         addCommand(new EightBallCommand());
         addCommand(new FlipCoinCommand());
+        addCommand(new GuessWhatCommand());
     }
 
     /**
