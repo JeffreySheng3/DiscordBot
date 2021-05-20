@@ -33,11 +33,9 @@ public class Mongo {
             List<Document> bannedDocument = words.find().into(new ArrayList<>());
             List<String> bannedWords = new ArrayList<>();
             // Get the first Document which is where the words are stored.
-            Document wordMap = bannedDocument.get(0);
-            for(Map.Entry<String,Object> entry : wordMap.entrySet()){
-                if(entry.getValue() instanceof String){
-                    bannedWords.add(entry.getValue().toString());
-                }
+//            Document wordMap = bannedDocument.get(0);
+            for(Document d : bannedDocument){
+                bannedWords.add((String)d.get("word"));
             }
             return bannedWords;
         }catch(Exception e){
@@ -50,7 +48,7 @@ public class Mongo {
         try(MongoClient mongoClient = MongoClients.create(connectionString)){
             System.out.println("Connection established");
             MongoCollection<Document> mCollection = mongoClient.getDatabase("Discord").getCollection("Banned Words");
-            mCollection.insertOne(new Document(word, word));
+            mCollection.insertOne(new Document("word", word));
 
         }catch(Exception e){
             System.out.println("Caught mongo exception: " + e);

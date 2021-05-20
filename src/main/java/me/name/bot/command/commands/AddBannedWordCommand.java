@@ -19,7 +19,7 @@ public class AddBannedWordCommand implements iCommand {
         String word = ctx.getArgs().get(0);
         Mongo m = new Mongo();
         m.addBannedWord(word);
-        channel.sendMessage(word + " added.").queue();
+        channel.sendMessage(word + " added to banned word list.").queue();
     }
 
     @Override
