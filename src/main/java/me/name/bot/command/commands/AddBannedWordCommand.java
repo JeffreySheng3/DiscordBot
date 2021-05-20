@@ -1,11 +1,12 @@
 package me.name.bot.command.commands;
 
-import com.mongodb.client.MongoDatabase;
-import me.name.bot.Bot;
 import me.name.bot.Mongo;
 import me.name.bot.command.CommandContext;
 import me.name.bot.command.iCommand;
 import net.dv8tion.jda.api.entities.MessageChannel;
+/*
+    Add a single word to the list of banned words for the censor listener.
+ */
 
 public class AddBannedWordCommand implements iCommand {
 
