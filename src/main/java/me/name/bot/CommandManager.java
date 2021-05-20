@@ -30,6 +30,7 @@ public class CommandManager {
         addCommand(new FlipCoinCommand());
         addCommand(new GuessWhatCommand());
         addCommand(new AddBannedWordCommand());
+        addCommand(new GetBannedWordsCommand());
     }
 
     /**
@@ -61,7 +62,9 @@ public class CommandManager {
         String commandName = event.getMessage().getContentRaw();
         String[] temp = commandName.split("\\s+");
         ArrayList<String> split = new ArrayList<String>(Arrays.asList(temp));
+        // Separate command from arguments
         commandName = split.remove(0);
+
         System.out.println("The commandName is: " + commandName);
         System.out.println(("The args are: " + split));
 

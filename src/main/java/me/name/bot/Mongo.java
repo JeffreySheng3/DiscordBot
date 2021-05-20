@@ -26,22 +26,24 @@ public class Mongo {
     /*
     Get the list of banned words from MongoDB and return it.
      */
-    public List<String> getBannedWords(MongoDatabase db){
-        MongoCollection<Document> words = db.getCollection("Banned Words");
-
-//        words.insertOne(new Document().append("Key", "Value").append("String", "Not String"));
-        List<Document> bannedDocument = words.find().into(new ArrayList<>());
-        List<String> bannedWords = new ArrayList<>();
-        // Get the first Document which is where the words are stored.
-        Document wordMap = bannedDocument.get(0);
-        for(Map.Entry<String,Object> entry : wordMap.entrySet()){
-            if(entry.getValue() instanceof String){
-                bannedWords.add(entry.getValue().toString());
+    public List<String> getBannedWord(){
+        try(MongoClient mongoClient = MongoClients.create(connectionString)){
+            System.out.println("Connection established");
+            MongoCollection<Document> words = mongoClient.getDatabase("Discord").getCollection("Banned Words");
+            List<Document> bannedDocument = words.find().into(new ArrayList<>());
+            List<String> bannedWords = new ArrayList<>();
+            // Get the first Document which is where the words are stored.
+            Document wordMap = bannedDocument.get(0);
+            for(Map.Entry<String,Object> entry : wordMap.entrySet()){
+                if(entry.getValue() instanceof String){
+                    bannedWords.add(entry.getValue().toString());
+                }
             }
+            return bannedWords;
+        }catch(Exception e){
+            System.out.println("Caught mongo exception: " + e);
         }
-
-        return bannedWords;
-
+        return new ArrayList<>();
     }
 
     public void addBannedWord(String word){
@@ -54,4 +56,5 @@ public class Mongo {
             System.out.println("Caught mongo exception: " + e);
         }
     }
+
 }
